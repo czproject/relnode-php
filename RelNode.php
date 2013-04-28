@@ -67,7 +67,7 @@
 		
 		
 		/**
-		 * @return	RelNode
+		 * @return	RelNode|FALSE
 		 */
 		public function getFirstFilled()
 		{
@@ -92,7 +92,7 @@
 		
 		
 		/**
-		 * @return	array
+		 * @return	RelNode[]
 		 */
 		public function getNearestChildren()
 		{
