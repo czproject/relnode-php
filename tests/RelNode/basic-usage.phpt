@@ -42,3 +42,37 @@ test(function() use ($root) {
 	Assert::same('subdir/sub/sub value', $node->value);
 });
 
+
+
+// Add child - empty dir path
+test(function() use ($root) {
+	$root->addChild(NULL, 'ABC');
+	Assert::same('ABC', $root->value);
+
+	$root->addChild('/', 'DEF');
+	Assert::same('DEF', $root->value);
+
+	$root->addChild(FALSE, 'GHI');
+	Assert::same('GHI', $root->value);
+	
+	$root->addChild(array(), 'JKL');
+	Assert::same('JKL', $root->value);
+	
+	$root->addChild(array(''), 'MNO');
+	Assert::same('MNO', $root->value);
+	
+	$root->addChild(array('', ''), 'PQR');
+	Assert::same('PQR', $root->value);
+	
+	$root->addChild(array('', '', ''), 'STU');
+	Assert::same('STU', $root->value);
+	
+	$root->children = array();
+	$root->addChild(array('', '', 'subdir'), 'VWX');
+	Assert::same('STU', $root->value);
+	
+	$root->value = NULL;
+	$node = $root->getFirstFilled();
+	Assert::same('VWX', $node->value);
+});
+

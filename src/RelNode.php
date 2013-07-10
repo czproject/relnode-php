@@ -26,16 +26,23 @@
 		 */
 		public function addChild($dir, $value)
 		{
-			if(!is_array($dir))
+			if(is_string($dir))
 			{
-				$dir = explode('/', trim($dir, '/'));
+				$dir = trim(trim($dir), '/');
 			}
 			
-			if(count($dir) === 0 || $dir === FALSE)
+			if(self::isEmpty($dir))
 			{
 				$this->value = $value;
 				return TRUE;
 			}
+			
+			if(!is_array($dir))
+			{
+				$dir = explode('/', $dir);
+			}
+			
+			$dir = self::clearDirPath($dir);
 			
 			if($this->dir !== NULL && $this->dir !== ''/*FS root*/)
 			{
@@ -127,6 +134,61 @@
 			$node->value = $value;
 			
 			return $node;
+		}
+		
+		
+		
+		/**
+		 * @param	string|array
+		 * @param	bool
+		 * @return	bool
+		 */
+		protected static function isEmpty($var, $onlyScalar = FALSE)
+		{
+			if($var === NULL || $var === FALSE || $var === '')
+			{
+				return TRUE;
+			}
+			elseif(is_array($var) && !$onlyScalar)
+			{
+				if(empty($var))
+				{
+					return TRUE;
+				}
+				
+				foreach($var as $value)
+				{
+					if(!self::isEmpty($value, TRUE))
+					{
+						return FALSE;
+					}
+				}
+				
+				return TRUE;
+			}
+			
+			return FALSE;
+		}
+		
+		
+		
+		/**
+		 * @param	array
+		 * @return	array
+		 */
+		protected static function clearDirPath(array $path)
+		{
+			$newPath = array();
+			
+			foreach($path as $value)
+			{
+				if(!self::isEmpty($value, TRUE))
+				{
+					$newPath[] = $value;
+				}
+			}
+			
+			return $newPath;
 		}
 	}
 
