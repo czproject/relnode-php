@@ -4,7 +4,7 @@
 	 * @author		Jan Pecha, <janpecha@email.cz>
 	 */
 	
-	namespace Cz\RelNode;
+	namespace Cz;
 	
 	class RelNode
 	{
