@@ -37,7 +37,7 @@
 				return TRUE;
 			}
 			
-			if($this->dir !== ''/*FS root*/)
+			if($this->dir !== NULL && $this->dir !== ''/*FS root*/)
 			{
 				if($this->dir !== reset($dir))
 				{
