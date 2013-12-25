@@ -26,3 +26,9 @@ function export(array $nodes)
 	return $values;
 }
 
+
+function value(\Cz\RelNode $node)
+{
+	return $node->value;
+}
+

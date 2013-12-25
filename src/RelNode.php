@@ -123,6 +123,39 @@
 
 
 		/**
+		 * @param  string|string[]
+		 * @return RelNode|NULL
+		 */
+		public function getNearestOneFor($path)
+		{
+			if(!is_array($path))
+			{
+				$path = trim(trim($path), '/');
+				$path = explode('/', $path);
+			}
+
+			$candidate = NULL;
+
+			if ($this->value !== NULL) {
+				$candidate = $this;
+			}
+
+			$firstPart = array_shift($path);
+			if($firstPart !== NULL && isset($this->children[$firstPart])) {
+				$childCandidate = $this->children[$firstPart]->getNearestOneFor($path);
+
+				if($childCandidate !== NULL)
+				{
+					$candidate = $childCandidate;
+				}
+			}
+
+			return $candidate;
+		}
+
+
+
+		/**
 		 * @param	string
 		 * @param	mixed|NULL
 		 * @return	RelNode
