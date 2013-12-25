@@ -6,9 +6,9 @@ if (extension_loaded('xdebug'))
 	Tester\CodeCoverage\Collector::start(__DIR__ . '/../coverage.dat');
 }
 
-function test(\Closure $function) 
-{ 
-	$function(); 
+function test(\Closure $function)
+{
+	$function();
 }
 
 
@@ -17,12 +17,12 @@ function test(\Closure $function)
 function export(array $nodes)
 {
 	$values = array();
-	
+
 	foreach($nodes as $node)
 	{
 		$values[] = $node->value;
 	}
-	
+
 	return $values;
 }
 

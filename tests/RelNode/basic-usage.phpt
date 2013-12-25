@@ -54,23 +54,23 @@ test(function() use ($root) {
 
 	$root->addChild(FALSE, 'GHI');
 	Assert::same('GHI', $root->value);
-	
+
 	$root->addChild(array(), 'JKL');
 	Assert::same('JKL', $root->value);
-	
+
 	$root->addChild(array(''), 'MNO');
 	Assert::same('MNO', $root->value);
-	
+
 	$root->addChild(array('', ''), 'PQR');
 	Assert::same('PQR', $root->value);
-	
+
 	$root->addChild(array('', '', ''), 'STU');
 	Assert::same('STU', $root->value);
-	
+
 	$root->children = array();
 	$root->addChild(array('', '', 'subdir'), 'VWX');
 	Assert::same('STU', $root->value);
-	
+
 	$root->value = NULL;
 	$node = $root->getFirstFilled();
 	Assert::same('VWX', $node->value);
