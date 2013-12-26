@@ -35,6 +35,11 @@ foreach($nodes as $node) {
     // 'sub value'
     // 'sub value 3'
 }
+
+$node = $root->getNearestOneFor('sub/sub1/sub2/sub3/my-sub'); // returns NULL or RelNode instance
+echo $node->value; // 'sub value'
+$node = $root->getNearestOneFor('sub/sub1/sub2/sub3/sub4'); // returns NULL or RelNode instance
+echo $node->value; // 'sub value 2'
 ```
 
 ------------------
