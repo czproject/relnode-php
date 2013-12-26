@@ -10,6 +10,9 @@
             "email": "janpecha@email.cz"
         }
     ],
+    "autoload": {
+        "classmap": ["src/RelNode.php"]
+    },
     "require": {
 
     }
