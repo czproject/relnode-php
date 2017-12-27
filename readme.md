@@ -45,5 +45,4 @@ echo $node->value; // 'sub value 2'
 ------------------
 
 License: [New BSD License](license.md)
-<br>Author: Jan Pecha, http://janpecha.iunas.cz/
-
+<br>Author: Jan Pecha, https://www.janpecha.cz/
